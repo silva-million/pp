@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Students</title>
+</head>
+<body>
+  <%- include("../partials/nav") %>
+
+  <h1>Students</h1>
+
+  <h2>Add Student</h2>
+  <form action="/students" method="POST">
+    <div>
+      <label>Name</label>
+      <input name="name" minlength="6" required />
+    </div>
+    <div>
+      <label>Age</label>
+      <input name="age" type="number" min="1" required />
+    </div>
+    <div>
+      <label>Course</label>
+      <input name="course" required />
+    </div>
+    <button type="submit">Add</button>
+  </form>
+
+  <h2>List of Students</h2>
+
+  <% if (students.length === 0) { %>
+    <p>No students yet.</p>
+  <% } else { %>
+    <table border="1" cellpadding="8" cellspacing="0">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Course</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% students.forEach((s, i) => { %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><a href="/students/<%= s._id %>"><%= s.name %></a></td>
+            <td><%= s.age %></td>
+            <td><%= s.course %></td>
+            <td>
+              <a href="/students/<%= s._id %>/edit">Edit</a>
+              <form action="/students/<%= s._id %>/delete" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</body>
+</html>

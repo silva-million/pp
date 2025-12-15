@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Student</title>
+</head>
+
+<body>
+    <%- include("../partials/nav") %>
+        <h1>Student Details</h1>
+
+        <p><strong>ID:</strong>
+            <%= student._id %>
+        </p>
+        <p><strong>Name:</strong>
+            <%= student.name %>
+        </p>
+        <p><strong>Age:</strong>
+            <%= student.age %>
+        </p>
+        <p><strong>Course:</strong>
+            <%= student.course %>
+        </p>
+
+        <a href="/students">Back</a>
+        <a href="/students/<%= student._id %>/edit">Edit</a>
+        <form action="/students/<%= student._id %>/delete" method="POST" style="display:inline;">
+            <button type="submit">Delete</button>
+        </form>
+</body>
+
+</html>

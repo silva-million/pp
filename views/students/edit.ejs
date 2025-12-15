@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Student</title>
+</head>
+<body>
+  <%- include("../partials/nav") %>
+
+  <h1>Edit Student</h1>
+
+  <form action="/students/<%= student._id %>/update" method="POST">
+    <div>
+      <label>Name</label>
+      <input name="name" minlength="6" value="<%= student.name %>" required />
+    </div>
+    <div>
+      <label>Age</label>
+      <input name="age" type="number" min="1" value="<%= student.age %>" required />
+    </div>
+    <div>
+      <label>Course</label>
+      <input name="course" value="<%= student.course %>" required />
+    </div>
+    <button type="submit">Save</button>
+  </form>
+
+  <a href="/students/<%= student._id %>">Cancel</a>
+</body>
+</html>
